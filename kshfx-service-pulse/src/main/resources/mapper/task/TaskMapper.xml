@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kshfx.pulse.task.dao.TaskMapper">
+
+    <select id="checkTaskOfExists" resultType="java.lang.Boolean">
+        select count(ID)
+        from TASK
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and ID &lt;> #{taskId}
+            </if>
+            <if test="taskName != null and taskName != ''">
+                and TASK_NAME = #{taskName}
+            </if>
+        </where>
+        limit 1
+    </select>
+
+    <select id="getTaskList" resultType="com.kshfx.pulse.task.bean.Task">
+        select *
+        from TASK
+        <where>
+            and TASK_NAME like concat('%', #{taskName}, '%') or TASK_DESC like concat('%', #{taskName}, '%')
+        </where>
+        order by ID
+    </select>
+</mapper>

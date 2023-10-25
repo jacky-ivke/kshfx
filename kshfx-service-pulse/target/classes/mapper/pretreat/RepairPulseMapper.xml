@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kshfx.pulse.pretreat.dao.RepairPulseMapper">
+
+    <select id="checkRepairDataOfExists" resultType="java.lang.Boolean">
+        select count(ID)
+        from TASK_REPAIR_PULSE
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+        </where>
+        limit 1
+    </select>
+
+    <select id="getRepairPulseList" resultType="com.kshfx.pulse.pretreat.bean.RepairPulse">
+        select *
+        from TASK_REPAIR_PULSE
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+        </where>
+        order by CSV_ID, SERIAL_NO, ID
+    </select>
+
+    <select id="getRepairPulseOfParamList" resultType="com.kshfx.pulse.pretreat.bean.RepairPulse">
+        select *
+        from TASK_REPAIR_PULSE
+        <where>
+            <if test="conditionParam.taskId != null and conditionParam.taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+            <if test="conditionParam.startTime != null and conditionParam.startTime != '' and conditionParam.endTime != null and conditionParam.endTime != ''">
+                and INTERCEPT_TIME = between #{conditionParam.startTime} and #{conditionParam.endTime}
+            </if>
+            <if test="conditionParam.startPos != null and conditionParam.startPos != '' and conditionParam.endPos != null and conditionParam.endPos != ''">
+                and POSITION = between #{conditionParam.startPos} and #{conditionParam.endPos}
+            </if>
+            <if test="conditionParam.startFrequency != null and conditionParam.startFrequency != '' and conditionParam.endFrequency != null and conditionParam.endFrequency != ''">
+                and FREQUENCY = between #{conditionParam.startFrequency} and #{conditionParam.endFrequency}
+            </if>
+            <if test="conditionParam.startPulseWidth != null and conditionParam.startPulseWidth != '' and conditionParam.endPulseWidth != null and conditionParam.endPulseWidth != ''">
+                and PULSE_WIDTH = between #{conditionParam.startPulseWidth} and #{conditionParam.endPulseWidth}
+            </if>
+            <if test="conditionParam.startAmplitude != null and conditionParam.startAmplitude != '' and conditionParam.endAmplitude != null and conditionParam.endAmplitude != ''">
+                and MODULATION_TYPE = between #{conditionParam.startAmplitude} and #{conditionParam.endAmplitude}
+            </if>
+        </where>
+        order by CSV_ID, SERIAL_NO, ID
+    </select>
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kshfx.pulse.analysis.dao.AnalysisParamMapper">
+
+
+    <select id="checkAnalysisOfExists" resultType="java.lang.Boolean">
+        select count(ID)
+        from TASK_ANALYSIS_PARAM
+        <where>
+            <if test="analysisId != null and analysisId != ''">
+                and ID &lt;> #{analysisId}
+            </if>
+            <if test="analysisName != null and analysisName != ''">
+                and ANALYSIS_NAME = #{analysisName}
+            </if>
+        </where>
+        limit 1
+    </select>
+
+    <select id="getAnalysisList" resultType="com.kshfx.pulse.analysis.bean.AnalysisParam">
+        select *
+        from TASK_ANALYSIS_PARAM
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+        </where>
+        order by ID
+    </select>
+
+</mapper>

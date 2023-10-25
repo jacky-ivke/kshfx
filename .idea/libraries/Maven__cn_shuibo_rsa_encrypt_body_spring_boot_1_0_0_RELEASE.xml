@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.shuibo:rsa-encrypt-body-spring-boot:1.0.0.RELEASE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../maven/MyRepository/cn/shuibo/rsa-encrypt-body-spring-boot/1.0.0.RELEASE/rsa-encrypt-body-spring-boot-1.0.0.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../maven/MyRepository/cn/shuibo/rsa-encrypt-body-spring-boot/1.0.0.RELEASE/rsa-encrypt-body-spring-boot-1.0.0.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../maven/MyRepository/cn/shuibo/rsa-encrypt-body-spring-boot/1.0.0.RELEASE/rsa-encrypt-body-spring-boot-1.0.0.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

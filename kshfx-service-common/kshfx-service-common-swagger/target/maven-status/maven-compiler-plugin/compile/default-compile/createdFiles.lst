@@ -1,0 +1,7 @@
+com\kshfx\swagger\SwaggerAutoConfiguration.class
+com\kshfx\swagger\SwaggerProperties$AuthorizationScope.class
+com\kshfx\swagger\SwaggerWebConfiguration.class
+com\kshfx\swagger\SwaggerProperties$Contact.class
+com\kshfx\swagger\SwaggerProperties.class
+com\kshfx\swagger\SwaggerProperties$Authorization.class
+META-INF\spring-configuration-metadata.json

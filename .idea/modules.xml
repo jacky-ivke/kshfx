@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service.iml" filepath="$PROJECT_DIR$/kshfx-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-admin/kshfx-service-admin.iml" filepath="$PROJECT_DIR$/kshfx-service-admin/kshfx-service-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-auth/kshfx-service-auth.iml" filepath="$PROJECT_DIR$/kshfx-service-auth/kshfx-service-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-common/kshfx-service-common.iml" filepath="$PROJECT_DIR$/kshfx-service-common/kshfx-service-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-cache/kshfx-service-common-cache.iml" filepath="$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-cache/kshfx-service-common-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-core/kshfx-service-common-core.iml" filepath="$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-core/kshfx-service-common-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-datasource/kshfx-service-common-datasource.iml" filepath="$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-datasource/kshfx-service-common-datasource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-fileupload/kshfx-service-common-fileupload.iml" filepath="$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-fileupload/kshfx-service-common-fileupload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-swagger/kshfx-service-common-swagger.iml" filepath="$PROJECT_DIR$/kshfx-service-common/kshfx-service-common-swagger/kshfx-service-common-swagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-deploy/kshfx-service-deploy.iml" filepath="$PROJECT_DIR$/kshfx-service-deploy/kshfx-service-deploy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kshfx-service-pulse/kshfx-service-pulse.iml" filepath="$PROJECT_DIR$/kshfx-service-pulse/kshfx-service-pulse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../taodd-web-api/taodd-web-api.iml" filepath="$PROJECT_DIR$/../taodd-web-api/taodd-web-api.iml" />
+    </modules>
+  </component>
+</project>

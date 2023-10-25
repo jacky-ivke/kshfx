@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kshfx.pulse.csv.dao.CsvFileMapper">
+
+    <select id="countFileInfo" resultType="com.kshfx.pulse.csv.dto.CsvFileInfoDto">
+        SELECT SUM(FILE_SIZE) as fileSize,
+               SUM(PULSE_NUM) as pulseNum,
+               SUM(INTERVAL_NUM) as intervalNum,
+               SUM(POS_ANOMALY_NUM) as posAnomalyNum,
+               SUM(TIME_ANOMALY_NUM) as timeAnomalyNum,
+               MIN(MIN_FREQUENCY) as minFrequency,
+               MAX(MAX_FREQUENCY) as maxFrequency,
+               MIN(MIN_PULSE_WIDTH) as minPulseWidth,
+               MAX(MAX_PULSE_WIDTH) as maxPulseWidth,
+               MIN(MIN_POSITION) as minPosition,
+               MAX(MAX_POSITION) as maxPosition,
+               MIN(MIN_AMPLITUDE) as minAmplitude,
+               MAX(MAX_AMPLITUDE) as maxAmplitude
+        from TASK_CSV_FILE
+    </select>
+
+    <select id="getFilesByTaskId" resultType="com.kshfx.pulse.csv.bean.CsvFile">
+        select *
+        from TASK_CSV_FILE
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+        </where>
+    </select>
+
+</mapper>

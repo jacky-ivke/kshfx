@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kshfx.pulse.condition.dao.ConditionParamMapper">
+
+    <select id="checkConditionOfExists" resultType="java.lang.Boolean">
+        select count(ID)
+        from TASK_CONDITION_PARAM
+        <where>
+            <if test="conditionId != null and conditionId != ''">
+                and ID &lt;> #{conditionId}
+            </if>
+            <if test="conditionName != null and conditionName != ''">
+                and CONDITION_NAME = #{conditionName}
+            </if>
+        </where>
+        limit 1
+    </select>
+
+    <select id="getConditionList" resultType="com.kshfx.pulse.condition.bean.ConditionParam">
+        select *
+        from TASK_CONDITION_PARAM
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+        </where>
+        order by ID
+    </select>
+
+</mapper>

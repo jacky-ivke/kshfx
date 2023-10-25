@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kshfx</groupId>
+    <artifactId>kshfx-service</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.0</version>
+
+    <modules>
+        <!-- 登录认证授权-->
+        <module>kshfx-service-auth</module>
+        <!-- 聚合发布工程-->
+        <module>kshfx-service-deploy</module>
+        <!-- 基础公共组件库-->
+        <module>kshfx-service-common</module>
+        <!-- 脉冲可视化分析-->
+        <module>kshfx-service-pulse</module>
+        <module>kshfx-service-admin</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!--容器版本-->
+        <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
+        <junit.version>4.12</junit.version>
+        <com.kshfx.version>0.0.0</com.kshfx.version>
+        <project.repository>http://nexus.zxtd.com/repository/maven-public</project.repository>
+
+        <opencsv.version>5.8</opencsv.version>
+        <mysql.version>8.0.15</mysql.version>
+        <dm.version>18</dm.version>
+        <mybatis.plus.version>3.4.0</mybatis.plus.version>
+        <druid.version>1.1.10</druid.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <swagger.version>1.5.22</swagger.version>
+        <knife4j.version>2.0.1</knife4j.version>
+        <fastjson.version>1.2.24</fastjson.version>
+        <google.guava.version>30.0-jre</google.guava.version>
+        <fileupload.version>1.3.3</fileupload.version>
+
+    </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <!-- 登录安全认证-->
+            <dependency>
+                <groupId>com.kshfx</groupId>
+                <artifactId>kshfx-service-auth</artifactId>
+                <version>${com.kshfx.version}</version>
+            </dependency>
+
+            <!-- SpringBoot的依赖配置-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- CSV文件解析-->
+            <dependency>
+                <groupId>com.opencsv</groupId>
+                <artifactId>opencsv</artifactId>
+                <version>${opencsv.version}</version>
+            </dependency>
+
+            <!--数据库驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- 达梦数据库驱动-->
+            <dependency>
+                <groupId>com.dm</groupId>
+                <artifactId>DmJdbcDriver18</artifactId>
+                <version>${dm.version}</version>
+            </dependency>
+
+            <!-- 数据源配置-->
+            <dependency>
+                <groupId>com.kshfx</groupId>
+                <artifactId>kshfx-service-common-datasource</artifactId>
+                <version>${com.kshfx.version}</version>
+            </dependency>
+
+            <!-- 接口文档配置-->
+            <dependency>
+                <groupId>com.kshfx</groupId>
+                <artifactId>kshfx-service-common-swagger</artifactId>
+                <version>${com.kshfx.version}</version>
+            </dependency>
+
+            <!-- 脉冲可视化分析-->
+            <dependency>
+                <groupId>com.kshfx</groupId>
+                <artifactId>kshfx-service-pulse</artifactId>
+                <version>${com.kshfx.version}</version>
+            </dependency>
+
+            <!-- 基础核心组件-->
+            <dependency>
+                <groupId>com.kshfx</groupId>
+                <artifactId>kshfx-service-common-core</artifactId>
+                <version>${com.kshfx.version}</version>
+            </dependency>
+
+            <!-- mybatisPlus 核心库 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <!--druid连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- swagger2核心依赖 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-models</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- swagger-ui为项目提供api展示及测试的界面 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+
+            <!-- swagger文档 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+            <!--增加两个配置解决 NumberFormatException -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!--json转换工具-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google.guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${fileupload.version}</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.source}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>public</id>-->
+<!--            <url>${project.repository}</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--                <updatePolicy>interval:5</updatePolicy>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+
+<!--    <pluginRepositories>-->
+<!--        <pluginRepository>-->
+<!--            <id>public</id>-->
+<!--            <url>${project.repository}</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--                <updatePolicy>interval:5</updatePolicy>-->
+<!--            </snapshots>-->
+<!--        </pluginRepository>-->
+<!--    </pluginRepositories>-->
+</project>

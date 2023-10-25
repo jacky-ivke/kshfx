@@ -1,0 +1,3 @@
+com\kshfx\datasource\config\GlobalTransactionConfig.class
+com\kshfx\datasource\config\MybatisPlusConfig.class
+com\kshfx\datasource\config\MybatisPlusConfig$CustomIdGenerator.class

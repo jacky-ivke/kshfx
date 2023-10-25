@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kshfx.pulse.condition.dao.ConditionResultMapper">
+
+    <select id="checkResultDataOfExists" resultType="java.lang.Boolean">
+        select count(ID)
+        from TASK_CONDITION_RESULT
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+            <if test="conditionId != null and conditionId != ''">
+                and CONDITION_ID = #{conditionId}
+            </if>
+        </where>
+        limit 1
+    </select>
+
+    <select id="getConditionResultList" resultType="com.kshfx.pulse.condition.bean.ConditionResult">
+        select *
+        from TASK_CONDITION_RESULT
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+            <if test="conditionId != null and conditionId != ''">
+                and CONDITION_ID = #{conditionId}
+            </if>
+        </where>
+        order by ID
+    </select>
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kshfx.pulse.pretreat.dao.RepairConfigMapper">
+    <select id="getConfigByTaskId" resultType="com.kshfx.pulse.pretreat.bean.RepairConfig">
+        select *
+        from TASK_REPAIR_CONFIG
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+        </where>
+        limit 1
+    </select>
+
+</mapper>

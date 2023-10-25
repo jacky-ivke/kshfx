@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kshfx-service</artifactId>
+        <groupId>com.kshfx</groupId>
+        <version>0.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>kshfx-service-common</artifactId>
+    <packaging>pom</packaging>
+    <description>公共组件</description>
+
+    <modules>
+        <!-- 数据源处理-->
+        <module>kshfx-service-common-datasource</module>
+        <!-- 缓存服务-->
+        <module>kshfx-service-common-cache</module>
+        <!-- 文件上传-->
+        <module>kshfx-service-common-fileupload</module>
+        <!-- 接口文档-->
+        <module>kshfx-service-common-swagger</module>
+        <module>kshfx-service-common-core</module>
+    </modules>
+
+</project>

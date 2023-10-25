@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kshfx.pulse.csv.dao.RawPulseMapper">
+    <select id="getRawPulseList" resultType="com.kshfx.pulse.csv.bean.RawPulse">
+        select *
+        from TASK_RAW_PULSE
+        <where>
+            <if test="taskId != null and taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+        </where>
+        order by CSV_ID, SERIAL_NO, ID
+    </select>
+
+    <select id="getRawPulseOfParamList" resultType="com.kshfx.pulse.csv.bean.RawPulse">
+        select *
+        from TASK_RAW_PULSE
+        <where>
+            <if test="conditionParam.taskId != null and conditionParam.taskId != ''">
+                and TASK_ID = #{taskId}
+            </if>
+            <if test="conditionParam.startTime != null and conditionParam.startTime != '' and conditionParam.endTime != null and conditionParam.endTime != ''">
+                and INTERCEPT_TIME = between #{conditionParam.startTime} and #{conditionParam.endTime}
+            </if>
+            <if test="conditionParam.startPos != null and conditionParam.startPos != '' and conditionParam.endPos != null and conditionParam.endPos != ''">
+                and POSITION = between #{conditionParam.startPos} and #{conditionParam.endPos}
+            </if>
+            <if test="conditionParam.startFrequency != null and conditionParam.startFrequency != '' and conditionParam.endFrequency != null and conditionParam.endFrequency != ''">
+                and FREQUENCY = between #{conditionParam.startFrequency} and #{conditionParam.endFrequency}
+            </if>
+            <if test="conditionParam.startPulseWidth != null and conditionParam.startPulseWidth != '' and conditionParam.endPulseWidth != null and conditionParam.endPulseWidth != ''">
+                and PULSE_WIDTH = between #{conditionParam.startPulseWidth} and #{conditionParam.endPulseWidth}
+            </if>
+            <if test="conditionParam.startAmplitude != null and conditionParam.startAmplitude != '' and conditionParam.endAmplitude != null and conditionParam.endAmplitude != ''">
+                and MODULATION_TYPE = between #{conditionParam.startAmplitude} and #{conditionParam.endAmplitude}
+            </if>
+        </where>
+        order by CSV_ID, SERIAL_NO, ID
+    </select>
+
+    <select id="getNextPosVaildPulse" resultType="com.kshfx.pulse.csv.bean.RawPulse">
+        select * from (
+        select * from TASK_RAW_PULSE where TASK_ID = #{taskId} order by CSV_ID, SERIAL_NO, ID
+        )t
+        <where>
+            t.SERIAL_NO >= #{serialNo} and t.POSITION &lt;>400
+        </where>
+        limit 1
+    </select>
+
+    <select id="getNextTimeVaildPulse" resultType="com.kshfx.pulse.csv.bean.RawPulse">
+        select * from (
+        select * from TASK_RAW_PULSE where TASK_ID = #{taskId} order by CSV_ID, SERIAL_NO, ID
+        )t
+        <where>
+            t.SERIAL_NO >= #{serialNo} and t.INTERCEPT_TIME &lt;> 0
+        </where>
+        limit 1
+    </select>
+</mapper>
